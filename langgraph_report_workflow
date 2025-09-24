@@ -1,0 +1,35 @@
+// LangGraph Report Workflow
+digraph {
+	A [label="Planner Agent
+Role: Creates report outline & instructions
+Output: Plan / Outline"]
+	B [label="Research Plan Agent
+Role: Collects factual data & trends
+Output: Raw content / Data"]
+	C [label="Generate Draft Agent (Draft 1)
+Role: Combines plan + research into readable draft
+Output: Draft report"]
+	D [label="Reflect / Critique Agent
+Role: Reviews draft & provides critique
+Output: Critique / Recommendations"]
+	E [label="Research Critique Agent
+Role: Collects extra research for critique & validation
+Output: Supporting content / Evidence"]
+	F [label="Generate Draft Agent (Revision 3)
+Role: Produces final revised report
+Output: Final polished report"]
+	A -> B
+	B -> C
+	C -> D
+	D -> E
+	E -> F
+	subgraph cluster_agents {
+		label="Agents & Outputs"
+		A -> A
+		B -> B
+		C -> C
+		D -> D
+		E -> E
+		F -> F
+	}
+}
